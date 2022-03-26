@@ -3,6 +3,8 @@ package br.com.ifpb.gerenciadorendereco.models;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +16,11 @@ public class Contato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_contato")
     private Long id;
+    @org.hibernate.validator.constraints.NotEmpty
     private String nome;
+    @org.hibernate.validator.constraints.NotEmpty
     private int RG;
+    @org.hibernate.validator.constraints.NotEmpty
     private int CPF;
 
     @OneToMany(mappedBy = "contato", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)

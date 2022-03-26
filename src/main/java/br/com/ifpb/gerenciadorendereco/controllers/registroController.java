@@ -9,12 +9,15 @@ import br.com.ifpb.gerenciadorendereco.repository.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -56,12 +59,18 @@ public class registroController {
     }
     //Pagina de Cadastro de contatos METODO (POST)
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-    public String salvar(Contato contato, Endereco endereco){
+    public String salvar(@Valid Contato contato, Endereco endereco,
+                         BindingResult result, RedirectAttributes attributes){
+        if (result.hasErrors()){
+            attributes.addFlashAttribute("mensagem", "Verifique os Campos");
+            return "redirect:/registro/cadastro";
+        }
         contato.adicionarEndereco(endereco);
         contato.setConta((Conta) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         endereco.setContato(contato);
         contatoRepository.save(contato);
         enderecoRepository.save(endereco);
+        attributes.addFlashAttribute("mensagem", "SUCESSO");
         return "redirect:/registro/contatos";
     }
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body th:object="${dadosEndereco}" >
-<h1>Cadastro Contato</h1>
+<body class="container" th:object="${dadosEndereco}" >
 <form action="#" th:action="@{'/registro/contatos/endereco/editar/'+*{id}}" method="post">
     <h2>Dados do contato</h2>
     <p></p>
@@ -19,5 +19,6 @@
     <p><button type="submit" name="cadastrar_endereco">Atualizar</button></p>
     </div>
 </form>
+<script th:href="@{/js/bootstrap.min.js}" ></script>
 </body>
 </html>

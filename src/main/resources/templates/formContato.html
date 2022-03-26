@@ -1,28 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body class="container fundo">
     <h1>Cadastro Contato</h1>
     <form action="#" th:action="@{/registro/cadastro}" method="post" th:object="${dadosContato}">
-        <h2>Dados do contato</h2>
-        <p></p>
-        <p>Nome: <input type="text" th:field="*{nome}"></p>
-        <p>CPF: <input type="text" th:field="*{CPF}"></p>
-        <p>RG: <input type="text" th:field="*{RG}"></p>
-        <div th:object="${enderecoContato}" >
-        <h2>Dados Endereço</h2>
-        <p>Rua: <input type="text" value="" th:field="*{rua}"></p>
-        <p>Número: <input type="text" value="" th:field="*{numero}"></p>
-        <p>Complemento: <input type="text" value="" th:field="*{complemento}"></p>
-        <p>Bairro: <input type="text" value="" th:field="*{bairro}"></p>
-        <p>Cep: <input type="text" value="" th:field="*{cep}"></p>
-        <p>Cidade: <input type="text" value="" th:field="*{cidade}"></p>
-        <p>Estado: <input type="text" value="" th:field="*{estado}"></p>
-        <p><button type="submit" name="cadastrar_contato">Cadastrar contato</button></p>
+        <h2>Dados Contato</h2>
+        <hr/>
+        <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">Nome</label>
+            <input th:field="*{nome}" type="text" class="form-control" id="validationDefault01"  required>
         </div>
+        <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">CPF</label>
+            <input th:field="*{CPF}" type="text" class="form-control" id="validationDefault02" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">RG</label>
+            <input th:field="*{RG}" type="text" class="form-control" id="validationDefault03" required>
+        </div>
+        <br><br><br>
+        <hr/>
+        <div th:object="${enderecoContato}" >
+            <h2>Dados Endereço</h2>
+            <hr/>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Rua</label>
+                <input th:field="*{rua}" type="text" class="form-control" id="validationDefault05" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Numero</label>
+                <input th:field="*{numero}" type="text" class="form-control" id="validationDefault06" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Bairro</label>
+                <input th:field="*{bairro}" type="text" class="form-control" id="validationDefault08" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">CEP</label>
+                <input th:field="*{cep}" type="text" class="form-control" id="validationDefault09" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Cidade</label>
+                <input th:field="*{cidade}" type="text" class="form-control" id="validationDefault11" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Estado</label>
+                <input th:field="*{estado}" type="text" class="form-control" id="validationDefault12" required>
+            </div>
+            <div class="col-md-12">
+                <label for="validationDefault01" class="form-label">Complemento</label>
+                <input th:field="*{complemento}" type="text" class="form-control" id="validationDefault10">
+            </div>
+        </div>
+        <br><br><br><br><br><br><br><br><br>
+        <hr/>
+        <p><button class="btn btn-primary" type="submit" name="cadastrar_contato">Registrar</button></p>
     </form>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </html>
