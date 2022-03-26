@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-BR"
-      xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
     <title>Cadastro de usúario</title>
 </head>
@@ -15,4 +15,6 @@
         <p><button type="submit" name="cadastrar">Cadastrar</button></p>
     </form>
 </body>
+<script th:href="@{/js/jquery.min.js}"></script>
+<script th:href="@{/js/bootstrap.min.js}"></script>
 </html>

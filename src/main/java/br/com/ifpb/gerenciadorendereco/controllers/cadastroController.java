@@ -19,7 +19,10 @@ public class cadastroController {
 
     @RequestMapping(value = "/cadastro", method = RequestMethod.GET)
     public String cadastro(){
-        return "cadastro";
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")){
+            return "cadastro";
+        }
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
