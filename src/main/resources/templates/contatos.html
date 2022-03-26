@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+        <title>Title</title>
+    </head>
+    <body class="container">
+        <h1>Lista de Contatos</h1>
+        <a th:href="cadastro" class="btn btn-primary btn-custom">
+            <span class="glyphicon glyphicon-plus img-circle text-primary btn-icon"></span>
+            registrar
+        </a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>RJ</th>
+                    <th>Visualizar</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tr th:each="contato : ${contatos}">
+                <td>
+                    <span th:text="${contato.getNome()}"></span>
+                </td>
+                <td>
+                    <span th:text="${contato.getCPF()}"></span>
+                </td>
+                <td>
+                    <span th:text="${contato.getRG()}"></span>
+                </td>
+                <td><a th:href="@{'/registro/contatos/'+${contato.id}}" class="btn btn-primary btn-custom">
+                        <span class="glyphicon glyphicon-eye-open img-circle text-primary btn-icon"></span>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/registro/contatos/editar/'+${contato.id}}" class="btn btn-primary btn-custom">
+                        <span class="glyphicon glyphicon-pencil img-circle text-primary btn-icon"></span>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/registro/contatos/deletar/'+${contato.id}}" class="btn btn-primary btn-custom">
+                        <span class="glyphicon glyphicon-remove img-circle text-primary btn-icon"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <script th:href="@{/js/bootstrap.min.js}" ></script>
+    </body>
+</html>

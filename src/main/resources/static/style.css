@@ -1,0 +1,18 @@
+.btn-custom{
+    margin: 10px ;
+    border-radius: 5px;
+    padding: 4px 4px 5px;
+}
+.btn-icon{
+    padding: 5px;
+    background: white;
+}
+
+.glyphicon-remove {
+    color: red;
+}
+
+.glyphicon-pencil {
+    color: gray;
+}
+

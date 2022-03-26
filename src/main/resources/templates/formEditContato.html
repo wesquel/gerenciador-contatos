@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:object="${dadosContato}" >
+<h1>Cadastro Contato</h1>
+<form action="#" th:action="@{'/registro/contatos/editar/'+*{id}}" method="post">
+    <h2>Dados do contato</h2>
+    <p></p>
+    <p>Nome: <input type="text" th:field="*{nome}"></p>
+    <p>CPF: <input type="text" th:field="*{CPF}"></p>
+    <p>RG: <input type="text" th:field="*{RG}"></p>
+    <p><button type="submit" name="cadastrar_contato">Atualizar</button></p>
+    </div>
+</form>
+</body>
+</html>
