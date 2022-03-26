@@ -38,6 +38,7 @@ public class registroController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("contatos");
         Iterable<Contato> contatos = contatoRepository.findByConta(conta);
+        modelAndView.addObject("dadosConta", conta);
         modelAndView.addObject("contatos", contatos);
         return modelAndView;
     }
@@ -125,7 +126,7 @@ public class registroController {
         return modelAndView;
     }
 
-    // NAO TERMINADO
+    // Editar Contatos
     @RequestMapping(value = "/contatos/editar/{id}", method = RequestMethod.POST)
     public String salvarEdicaoContato(@PathVariable("id") long id, Contato contato){
         Contato atual = contatoRepository.findById(id);
@@ -134,6 +135,31 @@ public class registroController {
         atual.setRG(contato.getRG());
         contatoRepository.save(atual);
         return "redirect:/registro/contatos/";
+    }
+
+    //Pagina com Form de edição de endereco
+    @RequestMapping("/contatos/endereco/editar/{id}")
+    public ModelAndView editarEndereco(@PathVariable("id") long id){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("formEditEndereco");
+        Endereco endereco = enderecoRepository.findById(id);
+        modelAndView.addObject("dadosEndereco",endereco);
+        return modelAndView;
+    }
+
+    //Pagina de editar endereço
+    @RequestMapping(value = "/contatos/endereco/editar/{id}", method = RequestMethod.POST)
+    public String editarEndereco(@PathVariable("id") long id, Endereco endereco){
+        Endereco atual = enderecoRepository.findById(id);
+        atual.setRua(endereco.getRua());
+        atual.setCep(endereco.getCep());
+        atual.setCidade(endereco.getCidade());
+        atual.setComplemento(endereco.getComplemento());
+        atual.setBairro(endereco.getBairro());
+        atual.setEstado(endereco.getEstado());
+        atual.setNumero(endereco.getNumero());
+        enderecoRepository.save(atual);
+        return "redirect:/registro/contatos/"+atual.getContato().getId();
     }
 
 }

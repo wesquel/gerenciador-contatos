@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <title>Endereços</title>
 </head>
-<body th:object="${dadosContato}">
-<p><span th:text="*{nome}"></span></p>
+<body th:object="${dadosContato}" class="container">
+<h1>Endereços de <span th:text="*{nome}"></span></h1>
 
 <a th:href="@{'/registro/cadastro/endereco/'+*{id}}" class="btn btn-primary btn-custom">
     <span class="glyphicon glyphicon-plus img-circle text-primary btn-icon"></span>
@@ -50,7 +50,7 @@
             <span th:text="${endereco.getComplemento()}"></span>
         </td>
         <td th:object="${enderecos}">
-            <a th:href="@{'/registro/cadastro/endereco/'+${endereco.getId()}}" class="btn btn-primary btn-custom">
+            <a th:href="@{'/registro/contatos/endereco/editar/'+${endereco.getId()}}" class="btn btn-primary btn-custom">
                 <span class="glyphicon glyphicon-pencil img-circle text-primary btn-icon"></span>
             </a>
         </td>

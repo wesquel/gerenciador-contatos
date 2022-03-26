@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:object="${dadosEndereco}" >
+<h1>Cadastro Contato</h1>
+<form action="#" th:action="@{'/registro/contatos/endereco/editar/'+*{id}}" method="post">
+    <h2>Dados do contato</h2>
+    <p></p>
+    <p>Rua: <input type="text" value="" th:field="*{rua}"></p>
+    <p>Número: <input type="text" value="" th:field="*{numero}"></p>
+    <p>Complemento: <input type="text" value="" th:field="*{complemento}"></p>
+    <p>Bairro: <input type="text" value="" th:field="*{bairro}"></p>
+    <p>Cep: <input type="text" value="" th:field="*{cep}"></p>
+    <p>Cidade: <input type="text" value="" th:field="*{cidade}"></p>
+    <p>Estado: <input type="text" value="" th:field="*{estado}"></p>
+    <p><button type="submit" name="cadastrar_endereco">Atualizar</button></p>
+    </div>
+</form>
+</body>
+</html>

@@ -8,12 +8,18 @@
         <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
         <title>Title</title>
     </head>
-    <body class="container">
+    <body class="container" th:object="${dadosConta}" >
         <h1>Lista de Contatos</h1>
         <a th:href="cadastro" class="btn btn-primary btn-custom">
             <span class="glyphicon glyphicon-plus img-circle text-primary btn-icon"></span>
             registrar
         </a>
+        <a href="/logout" class="btn btn-primary btn-custom">
+            <span class="glyphicon glyphicon-off img-circle text-primary btn-icon"></span>
+            Logout
+        </a>
+        Usuario: <span th:text="${dadosConta.username}"></span>
+        <span></span>
         <table class="table table-bordered">
             <thead>
                 <tr>
