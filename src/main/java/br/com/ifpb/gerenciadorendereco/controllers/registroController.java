@@ -59,18 +59,16 @@ public class registroController {
     }
     //Pagina de Cadastro de contatos METODO (POST)
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-    public String salvar(@Valid Contato contato, Endereco endereco,
-                         BindingResult result, RedirectAttributes attributes){
+    public String salvar(@Valid Contato contato, Endereco endereco,BindingResult result){
+        System.out.println(result.getErrorCount());
         if (result.hasErrors()){
-            attributes.addFlashAttribute("mensagem", "Verifique os Campos");
-            return "redirect:/registro/cadastro";
+            System.out.println("tem error");;
         }
         contato.adicionarEndereco(endereco);
         contato.setConta((Conta) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         endereco.setContato(contato);
         contatoRepository.save(contato);
         enderecoRepository.save(endereco);
-        attributes.addFlashAttribute("mensagem", "SUCESSO");
         return "redirect:/registro/contatos";
     }
 

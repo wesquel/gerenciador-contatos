@@ -3,8 +3,7 @@ package br.com.ifpb.gerenciadorendereco.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +15,19 @@ public class Contato implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "seq_contato")
     private Long id;
-    @org.hibernate.validator.constraints.NotEmpty
+
+    @NotBlank(message = "O Nome não pode está vazio!")
     private String nome;
-    @org.hibernate.validator.constraints.NotEmpty
+
+    //@NotBlank(message = "O RG não pode está vazio!")
+    @Digits(integer = 7, fraction = 0, message = "O RG Deve ser constituido somente por digitos")
+    @Positive
     private int RG;
-    @org.hibernate.validator.constraints.NotEmpty
-    private int CPF;
+
+    //@NotBlank(message = "O CPF não pode está vazio!")
+    @Digits(integer = 11, fraction = 0, message = "O CPF Deve ser constituido somente por digitos")
+    @Positive
+    private long CPF;
 
     @OneToMany(mappedBy = "contato", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Endereco> enderecos = new ArrayList<Endereco>();

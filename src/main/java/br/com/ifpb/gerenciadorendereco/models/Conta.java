@@ -6,9 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,14 +22,17 @@ public class Conta implements Serializable, UserDetails {
     private Long id;
 
     @NotBlank(message = "Enter a username ")
-    @Column(nullable = false)
+    @Column(length = 20, nullable = false)
+    @Size(min =  2, max = 20, message = "O nome de usúario deve ter tamanho entre 2 e 20!")
     private String username;
 
     @NotBlank(message = "Enter a email ")
+    @Email(message = "Deve colocar um email valido")
     @Column(nullable = false)
     private String email;
 
     @NotBlank(message = "Enter a password ")
+    @Size(min = 5, message = "o tamanho minimo da senha deve ser 5")
     @Column(nullable = false)
     private String password;
 

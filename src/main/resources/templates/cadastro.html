@@ -9,10 +9,11 @@
 <body class="container fundo">
     <h1>Cadastro de usúario</h1>
     <hr>
-    <form method="post">
-<!--        <p>Nome de usúario: <input type="text" value="" name="username"/></p>-->
-<!--        <p>Email: <input type="text" value="" name="email"/></p>-->
-<!--        <p>Senha: <input type="text" value="" name="password"/></p>-->
+    <form action="/cadastro" method="post">
+
+        <div th:if="*{error}" th:text="*{error}" class="alert alert-danger" role="alert">
+        </div>
+
         <div class="col-md-4">
             <label class="form-label">Nome de usúario:</label>
             <input name="username" type="text" class="form-control" id="validationDefault06" required>
