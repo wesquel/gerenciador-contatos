@@ -4,17 +4,28 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Editar Dados</title>
 </head>
-<body class="container" th:object="${dadosContato}" >
+<body class="container fundo" th:object="${dadosContato}" >
 <form action="#" th:action="@{'/registro/contatos/editar/'+*{id}}" method="post">
     <h2>Dados do contato</h2>
+    <hr>
     <p></p>
-    <p>Nome: <input type="text" th:field="*{nome}"></p>
-    <p>CPF: <input type="text" th:field="*{CPF}"></p>
-    <p>RG: <input type="text" th:field="*{RG}"></p>
-    <p><button type="submit" name="cadastrar_contato">Atualizar</button></p>
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label">Nome</label>
+        <input th:field="*{nome}" type="text" class="form-control" id="validationDefault01"  required>
     </div>
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label">CPF</label>
+        <input th:field="*{CPF}" type="number" class="form-control" id="validationDefault02" required>
+    </div>
+    <div class="col-md-4">
+        <label for="validationDefault01" class="form-label">RG</label>
+        <input th:field="*{RG}" type="number" class="form-control" id="validationDefault03" required>
+    </div>
+    <br><br><br><br>
+    <hr>
+    <p><button type="submit" class="btn btn-primary" name="cadastrar_contato">Atualizar</button></p>
 </form>
 <script th:href="@{/js/jquery.min.js}"></script>
 <script th:href="@{/js/bootstrap.min.js}"></script>

@@ -6,13 +6,28 @@
     <meta charset="UTF-8">
     <title>Cadastro de usúario</title>
 </head>
-<body>
+<body class="container fundo">
     <h1>Cadastro de usúario</h1>
+    <hr>
     <form method="post">
-        <p>Nome de usúario: <input type="text" value="" name="username"/></p>
-        <p>Email: <input type="text" value="" name="email"/></p>
-        <p>Senha: <input type="text" value="" name="password"/></p>
-        <p><button type="submit" name="cadastrar">Cadastrar</button></p>
+<!--        <p>Nome de usúario: <input type="text" value="" name="username"/></p>-->
+<!--        <p>Email: <input type="text" value="" name="email"/></p>-->
+<!--        <p>Senha: <input type="text" value="" name="password"/></p>-->
+        <div class="col-md-4">
+            <label class="form-label">Nome de usúario:</label>
+            <input name="username" type="text" class="form-control" id="validationDefault06" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Email:</label>
+            <input name="email" type="email" class="form-control" id="validationDefault08" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Senha:</label>
+            <input name="password" type="password" class="form-control" id="validationDefault05" required>
+        </div>
+        <br><br><br>
+        <hr>
+        <p><button class="btn btn-primary" type="submit" name="cadastrar">Cadastrar</button></p>
     </form>
 </body>
 <script th:href="@{/js/jquery.min.js}"></script>

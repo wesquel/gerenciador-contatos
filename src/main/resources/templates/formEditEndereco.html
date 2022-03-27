@@ -6,19 +6,42 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body class="container" th:object="${dadosEndereco}" >
+<body class="container fundo" th:object="${dadosEndereco}" >
 <form action="#" th:action="@{'/registro/contatos/endereco/editar/'+*{id}}" method="post">
     <h2>Dados do contato</h2>
+    <hr>
     <p></p>
-    <p>Rua: <input type="text" value="" th:field="*{rua}"></p>
-    <p>Número: <input type="text" value="" th:field="*{numero}"></p>
-    <p>Complemento: <input type="text" value="" th:field="*{complemento}"></p>
-    <p>Bairro: <input type="text" value="" th:field="*{bairro}"></p>
-    <p>Cep: <input type="text" value="" th:field="*{cep}"></p>
-    <p>Cidade: <input type="text" value="" th:field="*{cidade}"></p>
-    <p>Estado: <input type="text" value="" th:field="*{estado}"></p>
-    <p><button type="submit" name="cadastrar_endereco">Atualizar</button></p>
+    <div class="col-md-4">
+        <label class="form-label">Rua</label>
+        <input th:field="*{rua}" type="text" class="form-control" id="validationDefault05" required>
     </div>
+    <div class="col-md-4">
+        <label class="form-label">Numero</label>
+        <input th:field="*{numero}" type="number" class="form-control" id="validationDefault06" required>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Bairro</label>
+        <input th:field="*{bairro}" type="text" class="form-control" id="validationDefault08" required>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">CEP</label>
+        <input th:field="*{cep}" type="number" class="form-control" id="validationDefault09" required>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Cidade</label>
+        <input th:field="*{cidade}" type="text" class="form-control" id="validationDefault11" required>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Estado</label>
+        <input th:field="*{estado}" type="text" class="form-control" id="validationDefault12" required>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Complemento</label>
+        <input th:field="*{complemento}" type="text" class="form-control" id="validationDefault10">
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+    <hr>
+    <p><button class="btn btn-primary" type="submit" name="cadastrar_endereco">Atualizar</button></p>
 </form>
 <script th:href="@{/js/jquery.min.js}"></script>
 <script th:href="@{/js/bootstrap.min.js}"></script>
