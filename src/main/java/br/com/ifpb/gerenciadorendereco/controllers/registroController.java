@@ -59,17 +59,22 @@ public class registroController {
     }
     //Pagina de Cadastro de contatos METODO (POST)
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-    public String salvar(@Valid Contato contato, Endereco endereco,BindingResult result){
-        System.out.println(result.getErrorCount());
-        if (result.hasErrors()){
-            System.out.println("tem error");;
+    public ModelAndView salvar(@Valid Contato contato,BindingResult bindingResult, Endereco endereco){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("formContato");
+        modelAndView.addObject("dadosContato",contato);
+        modelAndView.addObject("enderecoContato",endereco);
+        System.out.println(bindingResult.getErrorCount());
+        if (bindingResult.hasErrors()){
+            modelAndView.addObject("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
+            return modelAndView;
         }
         contato.adicionarEndereco(endereco);
         contato.setConta((Conta) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         endereco.setContato(contato);
         contatoRepository.save(contato);
         enderecoRepository.save(endereco);
-        return "redirect:/registro/contatos";
+        return modelAndView;
     }
 
     //Pagina de deletar contato

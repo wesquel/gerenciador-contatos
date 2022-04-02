@@ -1,6 +1,8 @@
 package br.com.ifpb.gerenciadorendereco.models;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -19,14 +21,14 @@ public class Contato implements Serializable {
     @NotBlank(message = "O Nome não pode está vazio!")
     private String nome;
 
-    //@NotBlank(message = "O RG não pode está vazio!")
     @Digits(integer = 7, fraction = 0, message = "O RG Deve ser constituido somente por digitos")
-    @Positive
+    @Positive(message = "O numero do RG deve ser maior que zero!")
+    @Min(value = 1000000, message = "O numero do RG deve possuir 7 digitos")
+    @Max(value = 9999999,message = "O numero do RG deve possuir 7 digitos")
     private int RG;
 
-    //@NotBlank(message = "O CPF não pode está vazio!")
     @Digits(integer = 11, fraction = 0, message = "O CPF Deve ser constituido somente por digitos")
-    @Positive
+    @Positive(message = "O numero do CPF deve ser maior que zero!")
     private long CPF;
 
     @OneToMany(mappedBy = "contato", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)

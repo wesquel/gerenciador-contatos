@@ -8,7 +8,9 @@
 </head>
 <body class="container fundo">
     <h1>Cadastro Contato</h1>
-    <form action="#" th:action="@{/registro/cadastro}" method="post" th:object="${dadosContato}">
+    <div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+<!--    <div th:if="${validMessage}" th:text="${validMessage}" class="alert alert-success" role="alert"></div>-->
+    <form th:action="@{/registro/cadastro}" method="post" th:object="${dadosContato}">
         <h2>Dados Contato</h2>
         <hr/>
         <div class="col-md-4">
