@@ -22,13 +22,13 @@ public class Conta implements Serializable, UserDetails {
     private Long id;
 
     @NotBlank(message = "Enter a username ")
-    @Column(length = 20, nullable = false)
+    @Column(length = 20, nullable = false, unique = true)
     @Size(min =  2, max = 20, message = "O nome de usúario deve ter tamanho entre 2 e 20!")
     private String username;
 
     @NotBlank(message = "Enter a email ")
     @Email(message = "Deve colocar um email valido")
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @NotBlank(message = "Enter a password ")

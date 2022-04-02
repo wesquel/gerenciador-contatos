@@ -11,10 +11,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.*;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Set;
 
 @Controller
@@ -34,15 +37,21 @@ public class cadastroController {
     }
 
     @RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-    public Object cadastro(@Valid Conta conta, BindingResult bindingResult) {
+    public Object cadastro(@Valid Conta conta, BindingResult bindingResult, RedirectAttributes atributos) {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(bindingResult.getErrorCount());
+        if(contaRepository.findByUsername(conta.getUsername()) != null){
+            bindingResult.rejectValue("username", "error.user", "Username já existe.");
+        }
+        else if (contaRepository.findByEmail(conta.getEmail()) != null){
+            bindingResult.rejectValue("email", "error.user", "Email já existe.");
+        }
         if (bindingResult.hasErrors()) {
-            modelAndView.addObject("error", bindingResult.getAllErrors().get(0).getDefaultMessage());
+            modelAndView.addObject("errorMessage", bindingResult.getAllErrors().get(0).getDefaultMessage());
             return modelAndView;
         }
         conta.setPassword(new BCryptPasswordEncoder().encode(conta.getPassword()));
         contaRepository.save(conta);
+        modelAndView.addObject("validMessage", "Conta cadastrada com sucesso!");
         return modelAndView;
     }
 

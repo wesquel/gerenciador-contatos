@@ -10,8 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ContaRepository extends CrudRepository<Conta, String> {
-    @Query(value = "select * from conta where username = :name",nativeQuery = true)
-    Conta Verify(@Param("name") String username);
-
+    Conta findByEmail(String email);
     Conta findByUsername(String username);
 }

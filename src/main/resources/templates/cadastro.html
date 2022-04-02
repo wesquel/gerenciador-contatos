@@ -9,11 +9,12 @@
 <body class="container fundo">
     <h1>Cadastro de usúario</h1>
     <hr>
-    <form action="/cadastro" method="post">
+    <form th:action="@{/cadastro}" method="post">
 
-        <div th:if="*{error}" th:text="*{error}" class="alert alert-danger" role="alert">
-        </div>
-
+        <!--/*@thymesVar id="errorMessage" type="br.com.ifpb.gerenciadorendereco.controllers.cadastroController"*/-->
+        <div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger" role="alert"></div>
+        <!--/*@thymesVar id="validMessage" type="br.com.ifpb.gerenciadorendereco.controllers.cadastroController"*/-->
+        <div th:if="${validMessage}" th:text="${validMessage}" class="alert alert-success" role="alert"></div>
         <div class="col-md-4">
             <label class="form-label">Nome de usúario:</label>
             <input name="username" type="text" class="form-control" id="validationDefault06" required>
